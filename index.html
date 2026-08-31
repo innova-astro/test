@@ -1,0 +1,184 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#f5f7fc">
+  <title>InNova Astro Photo Suite · PixInsight</title>
+  <meta name="description" content="InNova Astro Photo Suite: Integrator, Editor and Adaptive Stretch. Add the official update repository to PixInsight.">
+  <link rel="canonical" href="https://innova-astro.github.io/test/">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="InNova Astro Photo Suite">
+  <meta property="og:description" content="Integrator. Editor. Adaptive Stretch. Your astrophotography workflow in PixInsight.">
+  <meta property="og:url" content="https://innova-astro.github.io/test/">
+  <meta property="og:image" content="https://innova-astro.github.io/test/fongo_github.jpg">
+  <meta property="og:image:width" content="2048">
+  <meta property="og:image:height" content="1152">
+  <meta property="og:image:alt" content="InNova Astro Photo Suite with Editor, Adaptive Stretch and Integrator branding.">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="InNova Astro Photo Suite">
+  <meta name="twitter:description" content="Your astrophotography workflow in PixInsight.">
+  <meta name="twitter:image" content="https://innova-astro.github.io/test/fongo_github.jpg">
+  <style>
+    :root { color-scheme: light; --ink: #081132; --muted: #59657b; --blue: #0758e8; --line: #dfe6f2; }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body { margin: 0; color: var(--ink); background: #f5f7fc; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; -webkit-font-smoothing: antialiased; }
+    a { color: inherit; }
+    a:focus-visible, button:focus-visible, input:focus-visible { outline: 3px solid #347cff; outline-offset: 5px; }
+    .skip { position: absolute; left: 16px; top: -80px; z-index: 10; padding: 12px; background: white; }
+    .skip:focus { top: 12px; }
+    .shell { width: min(1440px, calc(100% - 64px)); margin-inline: auto; }
+    header { height: 84px; display: flex; align-items: center; justify-content: space-between; gap: 24px; }
+    .brand { text-decoration: none; font-weight: 650; font-size: 24px; letter-spacing: -.9px; }
+    .brand span { color: var(--blue); }
+    .brand small { margin-left: 18px; padding-left: 18px; border-left: 1px solid #cbd5e6; font-size: 10px; letter-spacing: 2px; font-weight: 600; vertical-align: middle; }
+    nav { display: flex; gap: 28px; font-size: 13px; }
+    nav a { text-decoration: none; color: var(--muted); }
+    nav a:hover { color: var(--blue); }
+    .hero { position: relative; overflow: hidden; background: #f8f9fb; border: 1px solid #e5eaf4; border-radius: 20px; }
+    .hero img { display: block; width: 100%; height: auto; }
+    .intro { position: absolute; left: 38%; right: 9%; top: 42%; }
+    .eyebrow { margin: 0 0 12px; font-size: 10px; letter-spacing: 2.2px; font-weight: 650; color: var(--blue); text-transform: uppercase; }
+    h1 { margin: 0; font-size: clamp(24px, 3.1vw, 46px); line-height: 1.1; font-weight: 600; letter-spacing: -1.7px; }
+    .intro p:last-child { max-width: 420px; margin: 15px 0 0; color: var(--muted); font-size: clamp(12px, 1.1vw, 16px); line-height: 1.65; }
+    .install { scroll-margin-top: 28px; display: grid; grid-template-columns: .9fr 1.1fr; gap: 56px; padding: 48px; margin-top: 24px; border: 1px solid var(--line); border-radius: 20px; background: white; }
+    h2 { font-size: 29px; line-height: 1.2; font-weight: 600; letter-spacing: -.9px; margin: 0 0 14px; }
+    .install-copy > p:last-child { color: var(--muted); font-size: 14px; line-height: 1.8; margin: 0; max-width: 410px; }
+    .repo-label { display: block; margin: 0 0 11px; color: var(--muted); font-size: 12px; font-weight: 600; }
+    .copy-row { display: flex; gap: 8px; padding: 7px; border: 1px solid #d5dff0; background: #f5f8ff; border-radius: 10px; }
+    .copy-row input { min-width: 0; flex: 1; background: transparent; border: 0; padding: 10px 8px; color: #17346c; font-family: ui-monospace, SFMono-Regular, Consolas, monospace; font-size: 14px; }
+    .copy-row button { flex: none; border: 0; border-radius: 6px; padding: 13px 18px; min-height: 44px; background: var(--blue); color: white; font: inherit; font-size: 12px; font-weight: 650; cursor: pointer; }
+    .copy-row button:hover { background: #0345ba; }
+    .status { min-height: 19px; margin: 8px 0 15px; font-size: 12px; color: #244d87; }
+    ol { margin: 0; padding-left: 20px; color: var(--muted); font-size: 13px; line-height: 1.8; }
+    ol li { padding-left: 3px; margin-bottom: 5px; }
+    ol strong { color: var(--ink); font-weight: 550; }
+    footer { display: flex; justify-content: space-between; gap: 20px; padding: 27px 2px 34px; font-size: 11px; line-height: 1.7; color: var(--muted); }
+    footer p { margin: 0; }
+    footer a { text-decoration: none; }
+    footer a:hover { text-decoration: underline; }
+    @media (min-width: 900px) {
+      /* One shared width keeps the artwork and installation edges aligned. */
+      .shell { width: min(1280px, calc(100% - 48px)); height: 100vh; height: 100svh; display: grid; grid-template-rows: 56px minmax(0, 1fr) auto; }
+      header { height: auto; }
+      main { width: min(100%, calc((100vh - 340px) * 16 / 9)); width: min(100%, calc((100svh - 340px) * 16 / 9)); min-height: 0; justify-self: center; display: grid; grid-template-rows: auto auto; align-content: start; gap: 14px; }
+      .hero-space { min-width: 0; }
+      .hero { container-type: inline-size; width: 100%; border-radius: 14px; }
+      .intro { top: 41%; right: 7%; }
+      .intro .eyebrow { font-size: clamp(8px, 1cqw, 10px); letter-spacing: .18em; margin-bottom: 1cqw; }
+      h1 { font-size: 3.3cqw; letter-spacing: -.035em; }
+      .intro p:last-child { font-size: 1.4cqw; line-height: 1.5; margin-top: 1.2cqw; }
+      .install { width: 100%; min-width: 0; margin-top: 0; padding: 16px 20px; gap: 20px; grid-template-columns: minmax(0, .65fr) minmax(0, 1.35fr); align-items: center; border-radius: 14px; }
+      .install > div { min-width: 0; }
+      .install > div:last-child { width: 100%; max-width: 420px; justify-self: end; }
+      .install .eyebrow { font-size: 9px; letter-spacing: 1.6px; margin-bottom: 7px; }
+      h2 { font-size: 19px; letter-spacing: -.5px; margin-bottom: 8px; }
+      .install-copy > p:last-child { font-size: 11px; line-height: 1.55; }
+      .repo-label { font-size: 11px; margin-bottom: 7px; }
+      .copy-row { width: 100%; max-width: 420px; padding: 5px; }
+      .copy-row input { font-size: 11px; padding: 8px 5px; }
+      .copy-row button { padding: 10px 12px; }
+      .status { min-height: 17px; margin: 6px 0 8px; font-size: 11px; }
+      ol { font-size: 11px; line-height: 1.65; }
+      ol li { margin-bottom: 2px; }
+      footer { padding: 12px 2px 14px; }
+    }
+    @media (max-width: 899px) {
+      .shell { width: calc(100% - 40px); }
+      main { display: flex; flex-direction: column; gap: 16px; }
+      .install { order: -1; margin-top: 0; gap: 20px; padding: 24px; grid-template-columns: 1fr; }
+      .install-copy > p:last-child { max-width: 640px; }
+      .intro { top: 41%; right: 7%; }
+      .intro p:last-child { margin-top: 8px; }
+      .eyebrow { font-size: 9px; margin-bottom: 8px; }
+    }
+    @media (max-width: 680px) {
+      .shell { width: calc(100% - 28px); }
+      header { height: 68px; gap: 14px; }
+      .brand { font-size: 22px; }
+      .brand small { display: none; }
+      nav { gap: 17px; font-size: 12px; }
+      .hero { border-radius: 14px; }
+      .intro { position: static; padding: 25px 24px 30px; border-top: 1px solid #e9edf5; background: white; }
+      h1 { font-size: 34px; letter-spacing: -1.2px; }
+      .intro p:last-child { font-size: 14px; margin-top: 12px; }
+      .eyebrow { font-size: 9px; margin-bottom: 12px; }
+      .install { margin-top: 0; padding: 24px 22px; gap: 20px; border-radius: 14px; }
+      h2 { font-size: 26px; }
+      .copy-row { flex-direction: column; }
+      .copy-row input { width: 100%; font-size: 12px; min-height: 42px; }
+      footer { flex-direction: column; gap: 8px; padding-inline: 6px; }
+    }
+    @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+  </style>
+</head>
+<body>
+  <a class="skip" href="#installation">Skip to installation</a>
+  <div class="shell">
+    <header>
+      <a class="brand" href="./" aria-label="InNova Astro Photo Suite home">In<span>N</span>ova<small>ASTRO PHOTO SUITE</small></a>
+      <nav aria-label="Main navigation">
+        <a href="#installation">Installation</a>
+        <a href="https://www.teoriadelcolor.es/innova-astro-photo-suite">Discover InNova ↗</a>
+      </nav>
+    </header>
+    <main>
+      <div class="hero-space">
+      <section class="hero" aria-labelledby="hero-title">
+        <img src="fongo_github.jpg" width="2048" height="1152" fetchpriority="high" alt="InNova Astro Photo Suite: Editor, Adaptive Stretch and Integrator, with RGB, SHO, OSC, HOO, starless and AI-assisted workflows.">
+        <div class="intro">
+          <p class="eyebrow">Made for your astrophotography</p>
+          <h1 id="hero-title">One suite.<br>Your complete workflow.</h1>
+          <p>Integrate, edit and stretch your images.<br>Explore InNova Astro Photo Suite for PixInsight.</p>
+        </div>
+      </section>
+      </div>
+      <section class="install" id="installation" aria-labelledby="installation-title">
+        <div class="install-copy">
+          <p class="eyebrow">The next step</p>
+          <h2 id="installation-title">Add InNova to PixInsight.</h2>
+          <p>Use the repository address to install InNova through PixInsight's update system. Keep this address for future updates.</p>
+        </div>
+        <div>
+          <label class="repo-label" for="repository-url">Official update repository</label>
+          <div class="copy-row">
+            <input id="repository-url" type="text" readonly value="https://innova-astro.github.io/test/" spellcheck="false" aria-describedby="copy-status">
+            <button id="copy-button" type="button" hidden>Copy URL</button>
+          </div>
+          <p class="status" id="copy-status" role="status" aria-live="polite"></p>
+          <ol>
+            <li>Open <strong>Resources → Updates → Manage Repositories</strong> in PixInsight.</li>
+            <li>Add the address above and check for updates.</li>
+            <li>Install the available InNova package and restart PixInsight when prompted.</li>
+          </ol>
+        </div>
+      </section>
+    </main>
+    <footer>
+      <p>InNova Astro Photo Suite · Written by Jesús Manuel García Flores.</p>
+      <p><a href="https://www.teoriadelcolor.es/innova-astro-photo-suite">teoriadelcolor.es ↗</a></p>
+    </footer>
+  </div>
+  <script>
+    (function () {
+      var button = document.getElementById('copy-button');
+      var input = document.getElementById('repository-url');
+      var status = document.getElementById('copy-status');
+      button.hidden = false;
+      button.addEventListener('click', async function () {
+        try {
+          if (!navigator.clipboard || !window.isSecureContext) throw new Error('Clipboard unavailable');
+          await navigator.clipboard.writeText(input.value);
+          status.textContent = 'Copied. Paste this address into PixInsight.';
+        } catch (error) {
+          input.focus();
+          input.select();
+          input.setSelectionRange(0, input.value.length);
+          status.textContent = 'Address selected. Press Ctrl+C or Command+C to copy.';
+        }
+      });
+    }());
+  </script>
+</body>
+</html>
