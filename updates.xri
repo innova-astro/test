@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xri version="1.0">
+   <description>
+      <p>
+      This is the repository for PixInsight scripts, written by Jesús Manuel García Flores.
+    </p>
+   </description>
+   <platform os="all" arch="noarch" version="1.8.8:1.9.9">
+      <package fileName="InNovaAstroPhotoSuite.zip" sha1="9f5e5a01317365fff8f2468b3de1dd5dfb5ce7e0" type="script" releaseDate="20260908">
+         <title>
+        Astro Processor Script for Pixinsight.
+      </title>
+         <description>
+            <p>
+           * InNova Astro Photo Suite Astro v.1.0 - 08.09.2026
+		</p>
+         </description>
+      </package>
+   </platform>
+</xri>
+<Signature developerId="Jesus Manuel Garcia Flores" timestamp="2026-09-08T07:10:18.499Z" encoding="Base64">6RSZrW1u/dglK6e+KQ36FxcamEZWsTlN3qeGDFp9fXY6UrpdBv4kDucxBYuawHg9xHtEeF1UTW6DwmCygV4bCA==</Signature>
